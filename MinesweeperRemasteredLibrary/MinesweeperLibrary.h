@@ -1,24 +1,32 @@
 #pragma once
 
-#include "stdafx.h"
+#ifndef _MSREMASTEREDLIB_H_
+#define _MSREMASTEREDLIB_H_
 
-#ifdef MINESWEEPERREMASTEREDLIBRARY_EXPORTS
-# define MINESWEEPER_LIB __declspec (dllexport)
+#include "stdafx.h"
+#include "IField.h"
+#include "FlagType.h"
+
+#ifdef MSLIB_EXPORT
+# define EXPORT __declspec (dllexport)
 #else /* Not BUILDING_DLL */
-# define MINESWEEPER_LIB __declspec (dllimport)
+# define EXPORT __declspec (dllimport)
 #endif /* Not BUILDING_DLL */
 
-namespace MinesweeperLib {
-	class Functions
-	{
-	public:
-		static MINESWEEPER_LIB int doStuff(int a);
-		static MINESWEEPER_LIB void stopConsole();
-
-	private:
-
-	};
+extern "C" {
+	namespace MSUtils {
+		class Console
+		{
+		public:
+			static EXPORT void stopConsole(void);
+		};
+	}
+	namespace MSCore {
+		__declspec(dllexport) IField * NewField(void);
+		__declspec(dllexport) void Destroy(IField*);
+	}
 }
+#endif
 
 
 

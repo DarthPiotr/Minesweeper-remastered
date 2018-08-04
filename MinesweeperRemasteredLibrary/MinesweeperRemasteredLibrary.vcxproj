@@ -147,13 +147,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Field.h" />
+    <ClInclude Include="FlagType.h" />
+    <ClInclude Include="IField.h" />
     <ClInclude Include="MinesweeperLibrary.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="MinesweeperLibrary.cpp" />
+    <ClCompile Include="Field.cpp" />
+    <ClCompile Include="FlagType.cpp" />
+    <ClCompile Include="MSCore.cpp" />
+    <ClCompile Include="MSUtils.cpp">
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MSLIB_EXPORT;WIN32;_DEBUG;MINESWEEPERREMASTEREDLIBRARY_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

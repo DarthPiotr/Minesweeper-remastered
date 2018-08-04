@@ -24,6 +24,15 @@
     <ClInclude Include="MinesweeperLibrary.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Field.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FlagType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -32,7 +41,16 @@
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MinesweeperLibrary.cpp">
+    <ClCompile Include="MSUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MSCore.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FlagType.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
