@@ -1,19 +1,25 @@
 #include "stdafx.h"
 #include "Field.h"
 #include "FlagType.h"
+#include <utility>
 
 namespace MSCore {
-	Field::Field() {
+	Field::Field(){
+		this->value = 0;
+		this->flagLvl.setType(flagTypeEnum::UNFLAGGED);
+		this->shown = false;
+	}
+	Field::Field(short row, short col) : row(row), col(col) {
 		this->value = 0;
 		this->flagLvl.setType(flagTypeEnum::UNFLAGGED);
 		this->shown = false;
 	}
 
 	short Field::getValue() {
-		return this->value;
+		return value;
 	}
 	void Field::setValue(short val) {
-		this->value = val;
+		value = val;
 	}
 
 	/// <summary>Returns flag level of field. It can be:
@@ -36,5 +42,15 @@ namespace MSCore {
 	}
 	void Field::setShown(bool shown) {
 		this->shown = shown;
+	}
+
+	std::pair<short, short> Field::getCoords() {
+		return std::pair<short, short>(getRow(), getCol());
+	}
+	short Field::getCol() {
+		return col;
+	}
+	short Field::getRow() {
+		return row;
 	}
 }

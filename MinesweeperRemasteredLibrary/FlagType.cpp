@@ -2,6 +2,10 @@
 #include "FlagType.h"
 
 namespace MSCore {
+	FlagType::FlagType() {
+		this->type = UNFLAGGED;
+	}
+
 	void FlagType::setType(flagTypeEnum type) {
 		this->type = type;
 	}

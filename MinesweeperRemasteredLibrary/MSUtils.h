@@ -4,8 +4,7 @@
 #define _MSREMASTEREDLIB_H_
 
 #include "stdafx.h"
-#include "IField.h"
-#include "FlagType.h"
+#include "Board.h"
 
 #ifdef MSLIB_EXPORT
 # define EXPORT __declspec (dllexport)
@@ -17,13 +16,13 @@ extern "C" {
 	namespace MSUtils {
 		class Console
 		{
+		private:
+			static void writeString(std::string c);
 		public:
 			static EXPORT void stopConsole(void);
+			static EXPORT void drawBoard(MSCore::Board*);
+			static EXPORT void drawBoardUncovered(MSCore::Board*);
 		};
-	}
-	namespace MSCore {
-		__declspec(dllexport) IField * NewField(void);
-		__declspec(dllexport) void Destroy(IField*);
 	}
 }
 #endif

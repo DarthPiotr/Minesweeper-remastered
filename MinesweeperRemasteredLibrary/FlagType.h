@@ -3,6 +3,12 @@
 #ifndef __FLAGTYPE_H__
 #define __FLAGTYPE_H__
 
+#ifdef MSLIB_EXPORT
+# define EXPORT __declspec (dllexport)
+#else /* Not BUILDING_DLL */
+# define EXPORT __declspec (dllimport)
+#endif /* Not BUILDING_DLL */
+
 #include <string>
 
 namespace MSCore {
@@ -11,10 +17,12 @@ namespace MSCore {
 	private:
 		flagTypeEnum type;
 	public:
-		__declspec(dllexport) void setType(flagTypeEnum);
-		__declspec(dllexport) flagTypeEnum getTypeAsEnum();
-		__declspec(dllexport) short getTypeAsShort();
-		__declspec(dllexport) std::string getTypeAsString();
+		EXPORT FlagType();
+
+		EXPORT void setType(flagTypeEnum);
+		EXPORT flagTypeEnum getTypeAsEnum();
+		EXPORT short getTypeAsShort();
+		EXPORT std::string getTypeAsString();
 	};
 }
 #endif

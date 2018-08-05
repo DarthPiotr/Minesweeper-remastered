@@ -1,30 +1,39 @@
 #pragma once
 
 #include "IField.h"
+#include <utility>
 
 #ifndef __FIELD_H__
 #define __FIELD_H__
 
-namespace MSCore {
+#ifdef MSLIB_EXPORT
+# define EXPORT __declspec (dllexport)
+#else /* Not BUILDING_DLL */
+# define EXPORT __declspec (dllimport)
+#endif /* Not BUILDING_DLL */
+	namespace MSCore {
 
-	class Field : public IField {
-	private:
-		short value;
-		FlagType flagLvl;
-		bool shown;
+		class Field {
+		private:
+			short row, col;
+			short value;
+			FlagType flagLvl;
+			bool shown;
 
-	public:
-		Field();
+		public:
+			EXPORT Field();
+			EXPORT Field(short, short);
 
-		short getValue();
-		void setValue(short);
-		FlagType getFlag();
-		void setFlag(FlagType);
-		void setFlag(flagTypeEnum);
-		bool getShown();
-		void setShown(bool);
-
-	};
-}
-
+			EXPORT short getValue();
+			EXPORT void setValue(short);
+			EXPORT FlagType getFlag();
+			EXPORT void setFlag(FlagType);
+			EXPORT void setFlag(flagTypeEnum);
+			EXPORT bool getShown();
+			EXPORT void setShown(bool);
+			EXPORT std::pair<short,short> getCoords();
+			EXPORT short getRow();
+			EXPORT short getCol();
+		};
+	}
 #endif
